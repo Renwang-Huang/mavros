@@ -80,7 +80,7 @@
     <build_type>ament_cmake</build_type>
 
     <mavros plugin="${prefix}/mavros_plugins.xml" />
-    <rosdoc config="rosdoc.yaml" />
+    <!-- <rosdoc config="rosdoc.yaml" /> -->
     <rosindex>
       <!-- ROSIndex metadata. Wait until <include> will work -->
       <tags>

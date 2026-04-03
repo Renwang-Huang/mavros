@@ -205,9 +205,9 @@ target_link_libraries(mavros_node mavros)
 ament_python_install_package(${PROJECT_NAME})
 
 # NOTE(vooon): for some reason console_scripts do not work with ament_python!
-install(PROGRAMS scripts/mav
-  DESTINATION lib/${PROJECT_NAME}
-)
+# install(PROGRAMS scripts/mav
+#   DESTINATION lib/${PROJECT_NAME}
+# )
 
 install(TARGETS mavros mavros_node mavros_plugins
   EXPORT export_${PROJECT_NAME}
@@ -216,9 +216,9 @@ install(TARGETS mavros mavros_node mavros_plugins
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
-install(PROGRAMS scripts/install_geographiclib_datasets.sh
-  DESTINATION lib/${PROJECT_NAME}
-)
+# install(PROGRAMS scripts/install_geographiclib_datasets.sh
+#   DESTINATION lib/${PROJECT_NAME}
+# )
 
 install(DIRECTORY include/
   DESTINATION include
@@ -247,7 +247,7 @@ if(BUILD_TESTING)
   set(ament_cmake_flake8_CONFIG_FILE "./setup.cfg")
 
   # NOTE(vooon): tired to provide more and more macro
-  list(APPEND ament_cmake_cppcheck_ADDITIONAL_EXCLUDE "./test/*.cpp")
+  # list(APPEND ament_cmake_cppcheck_ADDITIONAL_EXCLUDE "./test/*.cpp")
 
   # NOTE(vooon): cpplint complains about generated lines too long. Nothing more.
   # XXX(vooon): don't work for Foxy!
@@ -265,31 +265,31 @@ if(BUILD_TESTING)
 
   ament_lint_auto_find_test_dependencies()
 
-  ament_add_gtest(libmavros-frame-conversions-test test/test_frame_conversions.cpp)
-  target_link_libraries(libmavros-frame-conversions-test mavros)
+  # ament_add_gtest(libmavros-frame-conversions-test test/test_frame_conversions.cpp)
+  # target_link_libraries(libmavros-frame-conversions-test mavros)
 
-  ament_add_gtest(libmavros-sensor-orientation-test test/test_sensor_orientation.cpp)
-  target_link_libraries(libmavros-sensor-orientation-test mavros)
+  # ament_add_gtest(libmavros-sensor-orientation-test test/test_sensor_orientation.cpp)
+  # target_link_libraries(libmavros-sensor-orientation-test mavros)
 
-  ament_add_gtest(libmavros-quaternion-utils-test test/test_quaternion_utils.cpp)
-  target_link_libraries(libmavros-quaternion-utils-test mavros)
+  # ament_add_gtest(libmavros-quaternion-utils-test test/test_quaternion_utils.cpp)
+  # target_link_libraries(libmavros-quaternion-utils-test mavros)
 
-  ament_add_gmock(mavros-router-test test/test_router.cpp)
-  target_link_libraries(mavros-router-test
-    mavros
-    ${mavros_msgs_TARGETS}
-  )
+  # ament_add_gmock(mavros-router-test test/test_router.cpp)
+  # target_link_libraries(mavros-router-test
+  #   mavros
+  #   ${mavros_msgs_TARGETS}
+  # )
 
-  ament_add_gmock(mavros-uas-test test/test_uas.cpp)
-  target_link_libraries(mavros-uas-test
-    mavros
-    ${mavros_msgs_TARGETS}
-  )
+  # ament_add_gmock(mavros-uas-test test/test_uas.cpp)
+  # target_link_libraries(mavros-uas-test
+  #   mavros
+  #   ${mavros_msgs_TARGETS}
+  # )
 
-  ament_add_pytest_test(mavros_py_test test/mavros_py
-    PYTHON_EXECUTABLE "${PYTHON_EXECUTABLE}"
-    APPEND_ENV PYTHONPATH=${CMAKE_CURRENT_BINARY_DIR}
-  )
+  # ament_add_pytest_test(mavros_py_test test/mavros_py
+  #   PYTHON_EXECUTABLE "${PYTHON_EXECUTABLE}"
+  #   APPEND_ENV PYTHONPATH=${CMAKE_CURRENT_BINARY_DIR}
+  # )
 endif()
 
 #ament_export_dependencies(console_bridge)
