@@ -1,13 +1,12 @@
 mavros package
 --------------
 
-It is the main package, please see its [README][mrrm].
-Here you may read [installation instructions][inst].
+It is the main package.
 
 mavros\_extras package
 ----------------------
 
-This package contains some extra nodes and plugins for mavros, please see its [README][exrm].
+This package contains some extra nodes and plugins for mavros.
 
 mavros\_msgs package
 --------------------

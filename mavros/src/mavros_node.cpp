@@ -1,16 +1,3 @@
-/*
- * Copyright 2013,2014,2015,2021 Vladimir Ermakov.
- *
- * This file is part of the mavros package and subject to the license terms
- * in the top-level LICENSE file of the mavros repository.
- * https://github.com/mavlink/mavros/tree/master/LICENSE.md
- */
-/**
- * @brief MAVROS Node
- * @file mavros_node.cpp
- * @author Vladimir Ermakov <vooon341@gmail.com>
- */
-
 #include <string>
 #include <memory>
 #include <vector>
@@ -19,10 +6,6 @@
 #include "mavros/mavros_uas.hpp"
 #include "rclcpp/rclcpp.hpp"
 
-/**
- * MAVROS Node is a transition helper, a component loader preconfigured
- * to work similar to mavros v1.
- */
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
@@ -56,12 +39,12 @@ int main(int argc, char * argv[])
 
   uas_url = mavros::utils::format("/uas%d", tgt_system);
 
-  RCLCPP_INFO(node->get_logger(), "Starting mavros_node container");
-  RCLCPP_INFO(node->get_logger(), "FCU URL: %s", fcu_url.c_str());
-  RCLCPP_INFO(node->get_logger(), "GCS URL: %s", gcs_url.c_str());
-  RCLCPP_INFO(node->get_logger(), "UAS Prefix: %s", uas_url.c_str());
+  // RCLCPP_INFO(node->get_logger(), "Starting mavros_node container");
+  // RCLCPP_INFO(node->get_logger(), "FCU URL: %s", fcu_url.c_str());
+  // RCLCPP_INFO(node->get_logger(), "GCS URL: %s", gcs_url.c_str());
+  // RCLCPP_INFO(node->get_logger(), "UAS Prefix: %s", uas_url.c_str());
 
-  RCLCPP_INFO(node->get_logger(), "Starting mavros router node");
+  // RCLCPP_INFO(node->get_logger(), "Starting mavros router node");
   auto router_node = std::make_shared<mavros::router::Router>(options, "mavros_router");
   exec.add_node(router_node);
 
@@ -79,7 +62,7 @@ int main(int argc, char * argv[])
     router_node->set_parameters(router_params);
   }
 
-  RCLCPP_INFO(node->get_logger(), "Starting mavros uas node");
+  // RCLCPP_INFO(node->get_logger(), "Starting mavros uas node");
   auto uas_node = std::make_shared<mavros::uas::UAS>(
     options, "mavros", uas_url, tgt_system,
     tgt_component);
